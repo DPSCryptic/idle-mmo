@@ -2,16 +2,16 @@ import Box from '@mui/material/Box';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 import type { StockInvestmentType } from '../../../types/InvestingTypes';
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
-function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
+const InvestmentGraph = memo(({ stock }: { stock: StockInvestmentType }) => {
 	// const lineData = stock.priceHistory.prices.map((price, index) => ({
 	// 	x: stock.priceHistory.dates[index],
 	// 	y: price,
 	// }));
 
 	const chartData = useMemo(
-		() => ({ prices: stock.priceHistory.prices.map(p => Number(p.toFixed(2))), dates: stock.priceHistory.dates }),
+		() => ({ prices: stock.priceHistory.prices, dates: stock.priceHistory.dates }),
 		[stock.priceHistory.dates, stock.priceHistory.prices]
 	); // only recalc when new data point added
 
@@ -43,5 +43,5 @@ function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
 			/>
 		</Box>
 	);
-}
+});
 export default InvestmentGraph;

@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { formatBigInt, type CurrencyPrefix } from '../../../../ts/utils/currencyFormating';
 import type { StockInvestmentType } from '../../../../types/InvestingTypes';
 import type { PlayerType } from '../../../../types/PlayerType';
-import InvestmentGraph from '../InvestmentGraph';
+//import InvestmentGraph from '../InvestmentGraph';
 import './StockComponent.css';
 
 function buyStock(
@@ -46,66 +46,66 @@ function buyStock(
 
 	return { status: true, message: `Bought ${amount} shares of ${stock.name} for ${amount * stock.value}` };
 }
-function StockComponent({
-	stock,
-	setStocks,
-	curPrefix,
-	player,
-	setPlayer,
-}: {
-	stock: StockInvestmentType;
-	setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
-	curPrefix: CurrencyPrefix;
-	player: PlayerType;
-	setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
-}) {
-	const [amount, setAmount] = useState(0);
-	const [resultMessage, setResultMessage] = useState<{ status: boolean; message: string } | undefined>(undefined);
-	return (
-		<div className='stock-component-container'>
-			<div className='stock-component-title'>{stock.name}</div>
-			<div className='stock-component-info-container'>
-				<div className='stock-component-info-text'>
-					<div>Value: {`${curPrefix}${stock.value.toFixed(2)}`}</div>
-					<div>Owned: {stock.amountOwned}</div>
-					<div>Total Paid: {`${curPrefix}${formatBigInt(stock.totalPaid)}`}</div>
-					<div>
-						Profit:{' '}
-						{`${curPrefix}${(stock.amountOwned * stock.value - Number(stock.totalPaid) / 100).toFixed(2)}`}
+const StockComponent = memo(
+	({
+		stock,
+		setStocks,
+		curPrefix,
+		player,
+		setPlayer,
+	}: {
+		stock: StockInvestmentType;
+		setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
+		curPrefix: CurrencyPrefix;
+		player: PlayerType;
+		setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
+	}) => {
+		const [amount, setAmount] = useState(0);
+		const [resultMessage, setResultMessage] = useState<{ status: boolean; message: string } | undefined>(undefined);
+		return (
+			<div className='stock-component-container'>
+				<div className='stock-component-title'>{stock.name}</div>
+				<div className='stock-component-info-container'>
+					<div className='stock-component-info-text'>
+						<div>Value: {`${curPrefix}${stock.value.toFixed(2)}`}</div>
+						<div>Owned: {stock.amountOwned}</div>
+						<div>Total Paid: {`${curPrefix}${formatBigInt(stock.totalPaid)}`}</div>
+						<div>
+							Profit:{' '}
+							{`${curPrefix}${(stock.amountOwned * stock.value - Number(stock.totalPaid) / 100).toFixed(2)}`}
+						</div>
+						<div>Remaining: {stock.remaining}</div>
+						<div>Dividend: {stock.dividend}%</div>
 					</div>
-					<div>Remaining: {stock.remaining}</div>
-					<div>Dividend: {stock.dividend}%</div>
+					<div className='stock-component-info-graph'>
+						{/* <InvestmentGraph stock={stock}></InvestmentGraph> */}
+						<div>chart placeholder</div>
+					</div>
 				</div>
-				<div className='stock-component-info-graph'>
-					<InvestmentGraph stock={stock}></InvestmentGraph>
-				</div>
-			</div>
-			<div style={{ display: 'flex' }}>
-				<input
-					type='tel'
-					placeholder='Amount to buy or sell'
-					onChange={e => {
-						console.log(e);
-						console.log(e.target);
-						console.log(e.target.value);
-						setAmount(Number(e.target.value));
-					}}
-				></input>
-				<div style={{ display: 'flex', flexDirection: 'column' }}>
-					<button
-						onClick={() => {
-							const result = buyStock(amount, stock, setStocks, player, setPlayer);
-							setResultMessage(result);
+				<div style={{ display: 'flex' }}>
+					<input
+						type='tel'
+						placeholder='Amount to buy or sell'
+						onChange={e => {
+							setAmount(Number(e.target.value));
 						}}
-					>
-						BUY
-					</button>
-					<button>SELL</button>
+					></input>
+					<div style={{ display: 'flex', flexDirection: 'column' }}>
+						<button
+							onClick={() => {
+								const result = buyStock(amount, stock, setStocks, player, setPlayer);
+								setResultMessage(result);
+							}}
+						>
+							BUY
+						</button>
+						<button>SELL</button>
+					</div>
+					<div>{`${resultMessage?.status === false ? resultMessage?.message : ''}`}</div>
 				</div>
-				<div>{`${resultMessage?.status === false ? resultMessage?.message : ''}`}</div>
 			</div>
-		</div>
-	);
-}
+		);
+	}
+);
 
 export default StockComponent;
