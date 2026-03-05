@@ -121,17 +121,25 @@ function App() {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
+			const now = new Date();
+
+			// Update date
 			setDate(prevDate => {
 				const newDate = new Date(prevDate);
 				newDate.setDate(newDate.getDate() + 1);
-				setStocks(prevStocks => changeStockPrice(prevStocks, newDate));
-
 				return newDate;
+			});
+
+			// Update stocks independently
+			setStocks(prevStocks => {
+				const newDate = new Date(now);
+				newDate.setDate(newDate.getDate() + 1);
+				return changeStockPrice(prevStocks, newDate);
 			});
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, []); // 👈 no dependency
+	}, []);
 
 	return (
 		<div className='global-container'>

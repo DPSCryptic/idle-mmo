@@ -11,10 +11,7 @@ function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
 	// }));
 
 	const chartData = useMemo(
-		() => ({
-			prices: stock.priceHistory.prices.map(p => Number(p.toFixed(2))),
-			dates: stock.priceHistory.dates.map(d => new Date(d)),
-		}),
+		() => ({ prices: stock.priceHistory.prices.map(p => Number(p.toFixed(2))), dates: stock.priceHistory.dates }),
 		[stock.priceHistory.dates, stock.priceHistory.prices]
 	); // only recalc when new data point added
 
@@ -41,7 +38,7 @@ function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
 						tickSize: 5,
 					},
 				]}
-				yAxis={[{ width: 55, tickSize: 5, scaleType: 'log' }]}
+				yAxis={[{ width: 55, tickSize: 5, scaleType: 'linear' }]}
 				slotProps={{ legend: { sx: { '& .MuiChartsLegend-label': { fontSize: 16, textShadow: 'none' } } } }}
 			/>
 		</Box>
