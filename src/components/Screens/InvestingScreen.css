@@ -1,0 +1,26 @@
+.investing-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0; /* ADD THIS */
+}
+.investing-toolbar {
+	margin-top: 10px;
+	display: flex;
+	height: 55px;
+	border-bottom: 3px solid gray;
+	gap: 20px;
+	justify-content: space-around;
+}
+
+.investing-toolbar button {
+	flex: 1;
+	margin-bottom: 10px;
+}
+
+.investing-content-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}

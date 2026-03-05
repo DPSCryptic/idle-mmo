@@ -1,0 +1,47 @@
+/* EARNINGS */
+.earnings-container {
+	display: flex;
+	flex: 1;
+}
+
+.earnings-buttons-container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	flex: 1;
+	justify-content: center;
+}
+
+.click-to-earn,
+.upgrade-click {
+	display: flex;
+	width: 90%; /* responsive width instead of 500px */
+	max-width: 600px; /* optional: cap width on larger screens */
+	margin: 0 auto; /* center on screen */
+	/* border: 3px solid red; */
+}
+.click-to-earn button,
+.upgrade-click button {
+	border-radius: 8px;
+	font-size: 20px;
+}
+
+.click-to-earn {
+	/* justify-content: center; */
+	/* align-items: center; */
+	height: 300px;
+	border-radius: 8px;
+}
+.click-to-earn button {
+	flex: 1;
+}
+
+.upgrade-click {
+	flex-direction: column;
+	text-align: center;
+	border-radius: 8px;
+}
+
+.earnings-overview {
+	flex: 1;
+}

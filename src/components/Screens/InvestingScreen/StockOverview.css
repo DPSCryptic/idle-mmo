@@ -1,0 +1,42 @@
+.stock-overview-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	flex: 1;
+}
+
+.sorting-toolbar {
+	display: flex;
+	gap: 10px;
+	padding: 5px;
+	border-bottom: 3px solid gray;
+}
+
+.stock-overview-toolbar-button {
+	font-size: clamp(0.8rem, 1.1vw, 1.2rem);
+	padding: 5px 10px;
+	border: 2px solid transparent;
+	background-color: rgb(59, 59, 59);
+}
+
+.stock-overview-toolbar-button:hover {
+	border: 2px solid rgb(190, 11, 11);
+	color: rgb(201, 70, 70);
+	transition: all 0.3s;
+}
+
+.stocks-overview {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	padding: 5px 10px;
+	overflow-y: auto; /* was: scroll */
+	/* flex: 1; */
+	min-height: 0; /* ADD THIS */
+}
+
+@media (max-width: 600px) {
+	.stocks-overview {
+		grid-template-columns: 1fr;
+	}
+}

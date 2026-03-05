@@ -1,0 +1,61 @@
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+.global-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-height: 0;
+}
+
+.top-container {
+	display: flex;
+	height: 45px;
+}
+
+.app-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+}
+
+.game-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	border: 3px solid gray;
+	border-bottom: none;
+	border-top: none;
+}
+
+@media (max-width: 600px) {
+	.earnings-container {
+		flex-direction: column; /* stack on mobile */
+	}
+
+	.earnings-buttons-container {
+		align-items: center; /* center buttons on mobile */
+	}
+
+	.toolbar-buttons {
+		text-shadow: 2px 1px 1px black;
+	}
+
+	.active-button {
+		text-shadow: 2px 1px 1px black;
+	}
+}

@@ -1,0 +1,44 @@
+.stock-component-container {
+	border: 1px solid rgb(190, 11, 11);
+	background-color: rgb(32, 32, 32);
+	padding: 5px 5px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 2px 2px 10px black inset;
+}
+
+.stock-component-title {
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.stock-component-info-container {
+	display: flex;
+	gap: 10px;
+	text-shadow: 2px 2px 1px black;
+}
+
+.stock-component-info-text,
+.stock-component-info-graph {
+	background-color: rgb(97, 97, 97);
+	border: 1px solid rgb(190, 11, 11);
+}
+.stock-component-info-text {
+	padding: 3px 8px;
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.stock-component-info-graph {
+	flex: 1;
+	min-width: 300px;
+	/* display: flex; */
+}
+
+@media (max-width: 600px) {
+}

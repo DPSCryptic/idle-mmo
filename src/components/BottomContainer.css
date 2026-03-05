@@ -1,0 +1,47 @@
+/* BOTTOM TOOLBAR */
+
+.bottom-buttons-container {
+	display: flex;
+	gap: 15px;
+	padding: 5px 10px;
+	border-top: 3px solid gray;
+	min-height: 65px;
+	max-height: 90px;
+	background-color: #242424;
+}
+
+.toolbar-buttons {
+	flex: 1 1 30%; /* flex-grow, flex-shrink, basis for mobile */
+	min-width: 80px; /* ensures buttons don't shrink too much */
+	border: 2px solid transparent;
+	background-color: rgb(59, 59, 59);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 5px;
+	font-size: clamp(0.5rem, 2.8vw, 2rem);
+	text-shadow: 3px 2px 1px black;
+}
+
+.toolbar-buttons:hover {
+	border: 2px solid rgb(190, 11, 11);
+	color: rgb(201, 70, 70);
+	transition: all 0.3s;
+}
+
+.active-button {
+	color: rgb(201, 70, 70);
+	border: 2px solid rgb(190, 11, 11);
+	text-shadow: 3px 2px 1px black;
+}
+
+@media (max-width: 600px) {
+	.toolbar-buttons {
+		text-shadow: 2px 2px 1px black;
+	}
+
+	.active-button {
+		text-shadow: 2px 2px 1px black;
+	}
+}
