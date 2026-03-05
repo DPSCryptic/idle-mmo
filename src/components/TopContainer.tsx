@@ -14,15 +14,18 @@ function TopContainer({
 	player,
 	curPrefix,
 	setCurPrefix,
+	date,
 }: {
 	player: PlayerType;
 	curPrefix: CurrencyPrefix;
 	setCurPrefix: React.Dispatch<React.SetStateAction<CurrencyPrefix>>;
+	date: Date;
 }) {
 	return (
 		<div className='top-container'>
 			<div className='player-money'>{curPrefix + formatBigInt(player.gold)}</div>
 			<div className='top-toolbar-extra'>
+				<div>{date.getDate()}</div>
 				<Select
 					defaultValue={'€'}
 					variant={'outlined'}

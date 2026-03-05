@@ -1,6 +1,6 @@
 import type { CurrencyPrefix } from '../../../../ts/utils/currencyFormating';
 import type { StockInvestmentType } from '../../../../types/InvestingTypes';
-//import InvestmentGraph from '../InvestmentGraph';
+import InvestmentGraph from '../InvestmentGraph';
 import './StockComponent.css';
 function StockComponent({ stock, curPrefix }: { stock: StockInvestmentType; curPrefix: CurrencyPrefix }) {
 	return (
@@ -16,7 +16,7 @@ function StockComponent({ stock, curPrefix }: { stock: StockInvestmentType; curP
 					<div>Dividend: {stock.dividend}%</div>
 				</div>
 				<div className='stock-component-info-graph'>
-					{/* <InvestmentGraph stock={stock}></InvestmentGraph> */}
+					<InvestmentGraph stock={stock}></InvestmentGraph>
 				</div>
 			</div>
 		</div>

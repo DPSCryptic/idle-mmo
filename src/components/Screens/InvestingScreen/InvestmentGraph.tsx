@@ -2,22 +2,31 @@ import Box from '@mui/material/Box';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 import type { StockInvestmentType } from '../../../types/InvestingTypes';
+import { useMemo } from 'react';
 
 function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
-	const lineData = stock.priceHistory.prices.map((price, index) => ({
-		x: stock.priceHistory.dates[index],
-		y: price,
-	}));
+	// const lineData = stock.priceHistory.prices.map((price, index) => ({
+	// 	x: stock.priceHistory.dates[index],
+	// 	y: price,
+	// }));
+
+	const chartData = useMemo(
+		() => ({
+			prices: stock.priceHistory.prices.map(p => Number(p.toFixed(2))),
+			dates: stock.priceHistory.dates.map(d => new Date(d)),
+		}),
+		[stock.priceHistory.dates, stock.priceHistory.prices]
+	); // only recalc when new data point added
 
 	return (
 		<Box sx={{ width: '100%', height: '100%' }}>
 			<LineChart
 				margin={{ bottom: 0, left: 10, right: 15, top: 0 }}
 				showToolbar={false}
-				dataset={lineData}
+				//dataset={lineData}
 				series={[
 					{
-						data: stock.priceHistory.prices.map(p => Number(p.toFixed(2))),
+						data: chartData.prices,
 						label: 'price',
 						curve: 'linear',
 						showMark: ({ index }) => index % 1 === 0,
@@ -26,7 +35,7 @@ function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
 				xAxis={[
 					{
 						scaleType: 'point',
-						data: stock.priceHistory.dates.map(d => new Date(d)),
+						data: chartData.dates,
 						valueFormatter: date => date.toLocaleDateString([], { day: '2-digit', month: '2-digit' }),
 						height: 25,
 						tickSize: 5,

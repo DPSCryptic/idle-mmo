@@ -124,10 +124,10 @@ function App() {
 			setDate(prevDate => {
 				const newDate = new Date(prevDate);
 				newDate.setDate(newDate.getDate() + 1);
+				setStocks(prevStocks => changeStockPrice(prevStocks, newDate));
 
 				return newDate;
 			});
-			setStocks(prevStocks => changeStockPrice(prevStocks, date));
 		}, 10);
 
 		return () => clearInterval(interval);
@@ -135,7 +135,7 @@ function App() {
 
 	return (
 		<div className='global-container'>
-			<TopContainer player={player} curPrefix={curPrefix} setCurPrefix={setCurPrefix}></TopContainer>
+			<TopContainer player={player} curPrefix={curPrefix} setCurPrefix={setCurPrefix} date={date}></TopContainer>
 			<MainContainer
 				activeButton={activeButton}
 				setActiveButton={setActiveButton}
