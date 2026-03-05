@@ -128,7 +128,7 @@ function App() {
 
 				return newDate;
 			});
-		}, 10);
+		}, 1000);
 
 		return () => clearInterval(interval);
 	}, []); // 👈 no dependency

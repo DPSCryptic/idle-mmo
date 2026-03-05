@@ -25,7 +25,7 @@ function TopContainer({
 		<div className='top-container'>
 			<div className='player-money'>{curPrefix + formatBigInt(player.gold)}</div>
 			<div className='top-toolbar-extra'>
-				<div>{date.getDate()}</div>
+				<div>{date.toLocaleDateString('nl-NL')}</div>
 				<Select
 					defaultValue={'€'}
 					variant={'outlined'}
