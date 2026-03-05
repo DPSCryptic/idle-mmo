@@ -40,8 +40,8 @@ export function changeStockPrice(investments: StockInvestmentType[], date: Date)
 		updated.priceHistory.prices.push(updated.value);
 		updated.priceHistory.dates.push(date);
 		if (updated.priceHistory.prices.length > 100 && updated.priceHistory.dates.length > 100) {
-			updated.priceHistory.prices.slice(-100);
-			updated.priceHistory.dates.slice(-100);
+			updated.priceHistory.prices = updated.priceHistory.prices.slice(-100);
+			updated.priceHistory.dates = updated.priceHistory.dates.slice(-100);
 		}
 
 		// console.log(updated);

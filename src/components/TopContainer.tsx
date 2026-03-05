@@ -28,7 +28,7 @@ function TopContainer({
 					variant={'outlined'}
 					size={'sm'}
 					sx={{ width: 120, backgroundColor: 'lightgray', borderColor: 'red', color: 'black' }}
-					onChange={(e, newValue) => {
+					onChange={(_e, newValue) => {
 						setCurPrefix(newValue as CurrencyPrefix);
 					}}
 				>

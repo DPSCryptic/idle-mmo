@@ -125,11 +125,10 @@ function App() {
 				const newDate = new Date(prevDate);
 				newDate.setDate(newDate.getDate() + 1);
 
-				setStocks(prevStocks => changeStockPrice(prevStocks, newDate));
-
 				return newDate;
 			});
-		}, 10000);
+			setStocks(prevStocks => changeStockPrice(prevStocks, date));
+		}, 10);
 
 		return () => clearInterval(interval);
 	}, []); // 👈 no dependency
