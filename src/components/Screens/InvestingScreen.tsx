@@ -1,6 +1,7 @@
 import type { CurrencyPrefix } from '../../ts/utils/currencyFormating';
 import type { ActiveInvestingButtonType } from '../../types/ButtonTypes';
 import type { StockInvestmentType } from '../../types/InvestingTypes';
+import type { PlayerType } from '../../types/PlayerType';
 import './InvestingScreen.css';
 import CryptoOverview from './InvestingScreen/CryptoOverview';
 import InvestingOverview from './InvestingScreen/InvestingOverview';
@@ -10,13 +11,19 @@ import StockOverview from './InvestingScreen/StockOverview';
 function InvestingScreen({
 	activeInvestingButton,
 	setActiveInvestingButton,
-	stockInvestments,
+	stocks,
+	setStocks,
 	curPrefix,
+	player,
+	setPlayer,
 }: {
 	activeInvestingButton: ActiveInvestingButtonType;
 	setActiveInvestingButton: React.Dispatch<React.SetStateAction<ActiveInvestingButtonType>>;
-	stockInvestments: StockInvestmentType[];
+	stocks: StockInvestmentType[];
+	setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
 	curPrefix: CurrencyPrefix;
+	player: PlayerType;
+	setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
 }) {
 	const buttonLabels: ActiveInvestingButtonType[] = ['STOCK', 'REAL ESTATE', 'CRYPTO'];
 
@@ -24,7 +31,15 @@ function InvestingScreen({
 
 	switch (activeInvestingButton) {
 		case 'STOCK':
-			content = <StockOverview stockInvestments={stockInvestments} curPrefix={curPrefix} />;
+			content = (
+				<StockOverview
+					stocks={stocks}
+					setStocks={setStocks}
+					curPrefix={curPrefix}
+					player={player}
+					setPlayer={setPlayer}
+				/>
+			);
 			break;
 		case 'REAL ESTATE':
 			content = <RealEstateOverview />;

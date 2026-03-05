@@ -1,13 +1,20 @@
 import type { CurrencyPrefix } from '../../../ts/utils/currencyFormating';
 import type { StockInvestmentType } from '../../../types/InvestingTypes';
+import type { PlayerType } from '../../../types/PlayerType';
 import './StockOverview.css';
 import StockComponent from './StockOverview/StockComponent';
 function StockOverview({
-	stockInvestments,
+	stocks,
+	setStocks,
 	curPrefix,
+	player,
+	setPlayer,
 }: {
-	stockInvestments: StockInvestmentType[];
+	stocks: StockInvestmentType[];
+	setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
 	curPrefix: CurrencyPrefix;
+	player: PlayerType;
+	setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
 }) {
 	return (
 		<div className='stock-overview-container'>
@@ -18,8 +25,17 @@ function StockOverview({
 				<button className='stock-overview-toolbar-button'>Owned</button>
 			</div>
 			<div className='stocks-overview'>
-				{stockInvestments.map(stock => {
-					return <StockComponent key={stock.name} stock={stock} curPrefix={curPrefix}></StockComponent>;
+				{stocks.map(stock => {
+					return (
+						<StockComponent
+							key={stock.name}
+							stock={stock}
+							setStocks={setStocks}
+							curPrefix={curPrefix}
+							player={player}
+							setPlayer={setPlayer}
+						></StockComponent>
+					);
 				})}
 			</div>
 		</div>

@@ -15,7 +15,8 @@ function GameContainer({
 	curPrefix,
 	activeInvestingButton,
 	setActiveInvestingButton,
-	stockInvestments,
+	stocks,
+	setStocks,
 }: {
 	activeButton: ActiveButtonType;
 	player: PlayerType;
@@ -23,7 +24,8 @@ function GameContainer({
 	curPrefix: CurrencyPrefix;
 	activeInvestingButton: ActiveInvestingButtonType;
 	setActiveInvestingButton: React.Dispatch<React.SetStateAction<ActiveInvestingButtonType>>;
-	stockInvestments: StockInvestmentType[];
+	stocks: StockInvestmentType[];
+	setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
 }) {
 	switch (activeButton) {
 		case 'INVESTING':
@@ -32,8 +34,11 @@ function GameContainer({
 					<InvestingScreen
 						activeInvestingButton={activeInvestingButton}
 						setActiveInvestingButton={setActiveInvestingButton}
-						stockInvestments={stockInvestments}
+						stocks={stocks}
+						setStocks={setStocks}
 						curPrefix={curPrefix}
+						player={player}
+						setPlayer={setPlayer}
 					></InvestingScreen>
 				</div>
 			);

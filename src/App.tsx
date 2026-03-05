@@ -18,7 +18,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 100000,
 		dividend: 1.05,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [1.0], dates: [yesterday] },
 		trend: 0,
@@ -33,7 +33,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 120000,
 		dividend: 1.15,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [2.0], dates: [yesterday] },
 		trend: 0.1,
@@ -48,7 +48,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 100000,
 		dividend: 1.05,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [15.0], dates: [yesterday] },
 		trend: 0,
@@ -63,7 +63,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 120000,
 		dividend: 1.15,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [22.0], dates: [yesterday] },
 		trend: 0.1,
@@ -78,7 +78,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 100000,
 		dividend: 1.05,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [33.0], dates: [yesterday] },
 		trend: 0,
@@ -93,7 +93,7 @@ const stockInvestments: StockInvestmentType[] = [
 		remaining: 120000,
 		dividend: 1.15,
 		profit: 0.0,
-		totalPaid: 0.0,
+		totalPaid: 0n,
 		amountOwned: 0,
 		priceHistory: { prices: [5.0], dates: [yesterday] },
 		trend: 0.1,
@@ -144,7 +144,8 @@ function App() {
 				curPrefix={curPrefix}
 				activeInvestingButton={activeInvestingButton}
 				setActiveInvestingButton={setActiveInvestingButton}
-				stockInvestments={stocks}
+				stocks={stocks}
+				setStocks={setStocks}
 			></MainContainer>
 		</div>
 	);

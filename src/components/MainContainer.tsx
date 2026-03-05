@@ -13,7 +13,8 @@ function MainContainer({
 	curPrefix,
 	activeInvestingButton,
 	setActiveInvestingButton,
-	stockInvestments,
+	stocks,
+	setStocks,
 }: {
 	activeButton: ActiveButtonType;
 	setActiveButton: React.Dispatch<React.SetStateAction<ActiveButtonType>>;
@@ -22,7 +23,8 @@ function MainContainer({
 	curPrefix: CurrencyPrefix;
 	activeInvestingButton: ActiveInvestingButtonType;
 	setActiveInvestingButton: React.Dispatch<React.SetStateAction<ActiveInvestingButtonType>>;
-	stockInvestments: StockInvestmentType[];
+	stocks: StockInvestmentType[];
+	setStocks: React.Dispatch<React.SetStateAction<StockInvestmentType[]>>;
 }) {
 	return (
 		<div className='app-container'>
@@ -33,7 +35,8 @@ function MainContainer({
 				curPrefix={curPrefix}
 				activeInvestingButton={activeInvestingButton}
 				setActiveInvestingButton={setActiveInvestingButton}
-				stockInvestments={stockInvestments}
+				stocks={stocks}
+				setStocks={setStocks}
 			></GameContainer>
 			<BottomContainer
 				activeButton={activeButton}

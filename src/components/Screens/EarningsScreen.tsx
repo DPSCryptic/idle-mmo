@@ -26,7 +26,6 @@ function EarningsScreen({
 				<div className='click-to-earn'>
 					<button
 						onClick={() => {
-							console.log(player.gold);
 							setPlayer(prev => ({
 								...prev,
 								gold: prev.gold + (100n + BigInt(prev.clickUpgrades) * 100n),

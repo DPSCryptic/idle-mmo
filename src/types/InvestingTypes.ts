@@ -5,7 +5,7 @@ export type BaseInvestmentType = {
 	startingPrice: number;
 	remaining: number;
 	profit: number;
-	totalPaid: number;
+	totalPaid: bigint;
 	amountOwned: number;
 	priceHistory: PriceHistoryType;
 	trend: number;
