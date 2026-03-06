@@ -2,7 +2,7 @@ import { memo, useState } from 'react';
 import { formatBigInt, type CurrencyPrefix } from '../../../../ts/utils/currencyFormating';
 import type { StockInvestmentType } from '../../../../types/InvestingTypes';
 import type { PlayerType } from '../../../../types/PlayerType';
-//import InvestmentGraph from '../InvestmentGraph';
+import InvestmentGraph from '../InvestmentGraph';
 import './StockComponent.css';
 
 function buyStock(
@@ -78,8 +78,7 @@ const StockComponent = memo(
 						<div>Dividend: {stock.dividend}%</div>
 					</div>
 					<div className='stock-component-info-graph'>
-						{/* <InvestmentGraph stock={stock}></InvestmentGraph> */}
-						<div>chart placeholder</div>
+						<InvestmentGraph stock={stock}></InvestmentGraph>
 					</div>
 				</div>
 				<div style={{ display: 'flex' }}>

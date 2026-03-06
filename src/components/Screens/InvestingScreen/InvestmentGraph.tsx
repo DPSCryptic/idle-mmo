@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 import type { StockInvestmentType } from '../../../types/InvestingTypes';
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 
-const InvestmentGraph = memo(({ stock }: { stock: StockInvestmentType }) => {
+function InvestmentGraph({ stock }: { stock: StockInvestmentType }) {
 	// const lineData = stock.priceHistory.prices.map((price, index) => ({
 	// 	x: stock.priceHistory.dates[index],
 	// 	y: price,
@@ -18,17 +18,11 @@ const InvestmentGraph = memo(({ stock }: { stock: StockInvestmentType }) => {
 	return (
 		<Box sx={{ width: '100%', height: '100%' }}>
 			<LineChart
+				skipAnimation
 				margin={{ bottom: 0, left: 10, right: 15, top: 0 }}
 				showToolbar={false}
 				//dataset={lineData}
-				series={[
-					{
-						data: chartData.prices,
-						label: 'price',
-						curve: 'linear',
-						showMark: ({ index }) => index % 1 === 0,
-					},
-				]}
+				series={[{ data: chartData.prices, label: 'price', curve: 'linear', showMark: false }]}
 				xAxis={[
 					{
 						scaleType: 'point',
@@ -38,10 +32,10 @@ const InvestmentGraph = memo(({ stock }: { stock: StockInvestmentType }) => {
 						tickSize: 5,
 					},
 				]}
-				yAxis={[{ width: 55, tickSize: 5, scaleType: 'linear' }]}
+				yAxis={[{ width: 55, tickSize: 5, scaleType: 'log' }]}
 				slotProps={{ legend: { sx: { '& .MuiChartsLegend-label': { fontSize: 16, textShadow: 'none' } } } }}
 			/>
 		</Box>
 	);
-});
+}
 export default InvestmentGraph;
